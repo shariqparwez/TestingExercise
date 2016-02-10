@@ -11,7 +11,7 @@ public class BankAccount {
 		this.accountHolderName = accountHolderName;
 		}
 		else{
-			throw new RuntimeException();
+			throw new NullPointerException();
 		}
 		this.accountNumber = accountNumber;
 		this.balance = balance;
@@ -56,15 +56,16 @@ public class BankAccount {
 
 
 	public double deposit(double amountDeposited){
-		return amountDeposited + balance;
+		balance = amountDeposited + balance;
+		return balance;
 	}
 	
 	public double withdraw(double amountWithdrawn) throws IllegalArgumentException{
-		double remainingBalance = 0.0;
+		//double remainingBalance = 0.0;
+		//to test loop
 		if((balance - amountWithdrawn) > 0){
-			remainingBalance = balance - amountWithdrawn;
-			return remainingBalance;
-		}
+			balance = balance - amountWithdrawn;
+			return balance;}
 		else
 			throw new IllegalArgumentException("Insufficient Money left in account\n");
 	}
